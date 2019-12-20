@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Memory_and_Input_Assignment.java&apos; to &apos;Memory and Input Assignment/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;Intro&apos;&#x0D;&#x0A;- Destination element: &apos;Memory and Input Assignment/src/(default package)&apos;&#x0D;&#x0A;- Original element: &apos;Memory_and_Input_Assignment.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=Memory and Input Assignment/src&lt;" element1="/src&lt;{Memory_and_Input_Assignment.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1488987819981" units="1" version="1.0"/>
+</session>

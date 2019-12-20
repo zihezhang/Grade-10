@@ -1,0 +1,187 @@
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class TicTacToe extends JFrame implements ActionListener {
+
+    private JButton north;
+    private JButton east;
+    private JButton west; 
+    private JButton south;
+    private JButton center;
+    private JButton northEast;
+    private JButton northWest;
+    private JButton southEast;
+    private JButton southWest;
+    int screenHeight;
+    int screenWidth;
+    int height;
+    int width;
+
+    public TicTacToe() 
+   {
+        super();
+
+            width = 400;
+            height = 300;
+
+            setSize(width, height);
+            setLocation(200, 100);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+            getContentPane().setBackground(Color.RED); 
+            getContentPane().setLayout(new GridLayout(3,3));
+
+            setupNEPanel();
+            setupNPanel();
+            setupNWPanel();
+            setupWPanel();
+            setupCPanel();
+            setupEPanel();
+            setupSWPanel();
+            setupSPanel();
+            setupSEPanel();
+
+            setVisible(true);
+
+   }
+
+   private JPanel setupNEPanel()
+      { 
+            northEast = new JButton("Move to North East");
+
+            JPanel northEP = new JPanel();
+
+            getContentPane().add(northEast);
+            east.addActionListener(this);
+
+            return northEP;
+      }
+
+    private JPanel setupNPanel()
+      {
+         north = new JButton("Move to North");
+
+         JPanel northP = new JPanel();
+
+         getContentPane().add(north);
+         north.addActionListener(this);
+
+         return northP;
+      }
+
+    private JPanel setupNWPanel()
+      {
+         northWest = new JButton("Move to North West");
+
+         JPanel northWP = new JPanel();
+
+         getContentPane().add(northWest); 
+         west.addActionListener(this);
+
+         return northWP;
+      }
+
+    private JPanel setupWPanel()
+      {
+
+            west = new JButton("Move to West");
+
+            JPanel westP = new JPanel();
+
+            getContentPane().add(west); 
+            west.addActionListener(this);
+
+            return westP;
+      }
+
+    private JPanel setupCPanel()
+      {
+            center = new JButton("Move to Center");
+
+            JPanel centerP = new JPanel();
+
+            getContentPane().add(center);
+            center.addActionListener(this);
+
+            return centerP;
+      }
+
+    private JPanel setupEPanel()
+      {
+            east = new JButton("Move to East");
+
+            JPanel eastP = new JPanel();
+
+            getContentPane().add(east);
+            east.addActionListener(this);
+
+            return eastP;
+
+      }
+
+    private JPanel setupSEPanel()
+      {
+            southEast = new JButton("Move to South East");
+
+            JPanel southEP = new JPanel();
+
+            getContentPane().add(southEast);
+            east.addActionListener(this);
+
+            return southEP;
+      }
+
+    private JPanel setupSPanel()
+      {
+            south = new JButton("Move to South");
+
+            JPanel southP = new JPanel();
+
+            getContentPane().add(south);
+            south.addActionListener(this);
+
+            return southP;
+      }
+
+    private JPanel setupSWPanel()
+      {
+            southWest = new JButton("Move to South West");
+
+            JPanel southWP = new JPanel();
+
+            getContentPane().add(southWest); 
+            west.addActionListener(this);
+
+            return southWP;
+      }
+
+    public void actionPerformed(ActionEvent e)
+    {
+        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+
+
+        if (e.getSource() == north)
+        {
+            this.setLocation((screenWidth - width)/ 2, 0);
+        }
+        else if (e.getSource() == south)
+        {
+            this.setLocation((screenWidth - width)/ 2, (screenHeight-height)- 30);
+        }
+        else if (e.getSource() == east)
+        {
+            this.setLocation(screenWidth - width , (screenHeight-height)/2);
+        }
+        else if (e.getSource() == west)
+        {
+           this.setLocation(0, (screenHeight-height)/2); 
+        }
+        else if (e.getSource() == center)
+        {
+            this.setLocation((screenWidth-width)/2, (screenHeight - height)/2);
+        }
+  }
+}

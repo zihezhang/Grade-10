@@ -1,0 +1,45 @@
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+import java.util.Scanner;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.ItemSelectable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JComboBox;
+
+public class TicTacToe extends JFrame
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		JFrame frame = new JFrame ("Test");
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300,300);
+		JPanel panel1 = new JPanel ();
+		JPanel panel2 = new JPanel ();
+		frame.add(panel1);
+		frame.add(panel2);
+		JButton button1 = new JButton ("Click here");
+		JButton button2 = new JButton ("No here!");
+		panel1.add(button1);
+		panel2.add(button2);
+		
+		}
+
+	}

@@ -1,0 +1,29 @@
+/*Name: Zihe Zhang
+ * Class: ICS2O1-02
+ * Date: 19/04/2017
+ * Teacher: Mr Naccorato
+ * Program summary:
+ */
+
+//Imports scanner from the library
+import java.util.Scanner;
+
+public class Part5 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		//Declaration that variable holds the sub program
+		Scanner reader = new Scanner (System.in);
+		
+		int count = reader.nextInt();
+		do 
+		{
+				System.out.println("Count is: " + count);
+				count++;
+        } 
+		while (count < 11);
+	}
+
+}

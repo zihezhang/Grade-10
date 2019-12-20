@@ -1,0 +1,347 @@
+/*Name: Maggie Wang and Zihe Zhang
+ * Class: ICS2O1-02
+ * Date: 06/16/2017
+ * Teacher: Mr Naccorato
+ * Program summary: This is the code for a Tic Tac Toe game.
+ */
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.*;
+
+public class TicTacToeGUI implements ActionListener
+{
+	private String letter = "";
+	private int count = 0;
+	private JFrame gamePanel = new JFrame("Tic Tac Toe");
+	private JFrame scary = new JFrame("AHAHHAHA SCARE U!");
+	private JButton button1 = new JButton("");
+	private JButton button2 = new JButton("");
+	private JButton button3 = new JButton("");
+	private JButton button4 = new JButton("");
+	private JButton button5 = new JButton("");
+	private JButton button6 = new JButton("");
+	private JButton button7 = new JButton("");
+	private JButton button8 = new JButton("");
+	private JButton button9 = new JButton("");
+	private JButton playagain = new JButton("Play Again");
+	private JButton music = new JButton("Play Music");
+	private JButton scare = new JButton("Click for a surpise!!!");
+	private boolean win = false;
+
+	//music for game
+	static AudioInputStream audioInputStream;
+	static Clip clip;
+	static public void playSound() 
+	{
+		try 
+		{
+			if(audioInputStream==null)
+				audioInputStream = AudioSystem.getAudioInputStream(new File("Creepy_Music_Box.wav").getAbsoluteFile());
+			if(clip == null)
+			{
+				clip = AudioSystem.getClip();
+				clip.open(audioInputStream);
+			}
+			clip.start();
+		} catch(Exception e) 
+		{
+			System.out.println("Error with playing sound.");
+			e.printStackTrace();
+		}
+	}
+	static public void stopSound() 
+	{
+		try 
+		{
+			clip.stop();
+		} catch(Exception e) 
+		{
+			System.out.println("Error with playing sound.");
+			e.printStackTrace();
+		}
+	}
+	
+	//music for jump scare
+	static public void playSound2()
+	{
+		try 
+		{
+			if(audioInputStream==null)
+				audioInputStream = AudioSystem.getAudioInputStream(new File("Jumpscare.wav").getAbsoluteFile());
+			if(clip == null)
+			{
+				clip = AudioSystem.getClip();
+				clip.open(audioInputStream);
+			}
+			clip.start();
+		} catch(Exception e) 
+		{
+			System.out.println("Error with playing sound.");
+			e.printStackTrace();
+		}
+	}
+	static public void stopSound2() 
+	{
+		try 
+		{
+			clip.stop();
+		} catch(Exception e) 
+		{
+			System.out.println("Error with playing sound.");
+			e.printStackTrace();
+		}
+	}
+	
+	public TicTacToeGUI()
+	{
+	//create game
+	gamePanel.setSize(500, 600);
+	gamePanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	gamePanel.setLayout(new GridLayout(4, 3));
+	gamePanel.setLocation(200, 100);
+
+	//Add Buttons
+	gamePanel.add(button1);
+	gamePanel.add(button2);
+	gamePanel.add(button3);
+	gamePanel.add(button4);
+	gamePanel.add(button5);
+	gamePanel.add(button6);
+	gamePanel.add(button7);
+	gamePanel.add(button8);
+	gamePanel.add(button9);
+	gamePanel.add(playagain);
+	gamePanel.add(music);
+	gamePanel.add(scare);
+	
+	button1.addActionListener(this);
+	button2.addActionListener(this);
+	button3.addActionListener(this);
+	button4.addActionListener(this);
+	button5.addActionListener(this);
+	button6.addActionListener(this);
+	button7.addActionListener(this);
+	button8.addActionListener(this);
+	button9.addActionListener(this);
+	playagain.addActionListener(this);
+	scare.addActionListener(this);
+	
+	music.addActionListener(new ActionListener()
+	{
+		boolean isOn = true;
+		@Override
+		//Default procedure used when the button is pressed
+		public void actionPerformed(ActionEvent e)
+		{
+
+			//Logic to change the image of the label
+			if(isOn)
+			{
+				playSound();
+				isOn = false;
+			}
+			else
+			{
+				stopSound();
+				isOn = true;
+			}
+		}
+
+	});
+	
+	gamePanel.setVisible(true);
+	}
+	
+	
+	public void actionPerformed(ActionEvent z)
+	{
+		count++;
+
+		//Who's Turn It is
+		if (count%2 == 1)
+		{
+			letter = "X";
+		}
+		else if (count%2 == 0)
+		{
+			letter = "O";
+		}
+
+
+		//Displaying an X or O on the buttons
+		if (z.getSource() == button1)
+		{
+			button1.setText(letter);
+			button1.setEnabled(false);
+		}
+		else if (z.getSource() == button2)
+		{
+			button2.setText(letter);
+			button2.setEnabled(false);
+		}
+		else if (z.getSource() == button3)
+		{
+			button3.setText(letter);
+			button3.setEnabled(false);
+		}
+		else if (z.getSource() == button4)
+		{
+			button4.setText(letter);
+			button4.setEnabled(false);
+		}
+		else if (z.getSource() == button5)
+		{
+			button5.setText(letter);
+			button5.setEnabled(false);
+		}
+		else if (z.getSource() == button6)
+		{
+			button6.setText(letter);
+			button6.setEnabled(false);
+		}
+		else if (z.getSource() == button7)
+		{
+			button7.setText(letter);
+			button7.setEnabled(false);
+		}
+		else if (z.getSource() == button8)
+		{
+			button8.setText(letter);
+			button8.setEnabled(false);
+		}
+		else if (z.getSource() == button9)
+		{
+			button9.setText(letter);
+			button9.setEnabled(false);
+		}
+
+
+		//Checking who wins
+		//Horizontal
+		if (button1.getText() == button2.getText() && button2.getText() == button3.getText() && button1.getText() != "")
+		{
+			win = true;
+		}
+		else if (button4.getText() == button5.getText() && button5.getText() == button6.getText() && button4.getText() != "")
+		{
+			win = true;
+		}
+		else if (button7.getText() == button8.getText() && button8.getText() == button9.getText() && button7.getText() != "")
+		{
+			win = true;
+		}
+
+		//Win vertically
+		else if (button1.getText() == button4.getText() && button4.getText() == button7.getText() && button1.getText() != "")
+		{
+			win = true;
+		}
+		else if (button2.getText() == button5.getText() && button5.getText() == button8.getText() && button2.getText() != "")
+		{
+			win = true;
+		}
+		else if (button3.getText() == button6.getText() && button6.getText() == button9.getText() && button3.getText() != "")
+		{
+			win = true;
+		}
+
+		//Win diagonally
+		else if (button1.getText() == button5.getText() && button5.getText() == button9.getText() && button1.getText() != "")
+		{
+			win = true;
+		}
+		else if (button3.getText() == button5.getText() && button5.getText() == button7.getText() && button3.getText() != "")
+		{
+			win = true;
+		}
+		//If no wins
+		else
+		{
+			win = false;
+		}
+
+		//Show who wins or if a tie
+		if (count == 9 && win == false)
+		{
+			JOptionPane.showMessageDialog(null, "It's a tie!");
+		}
+		
+		else if (win == true)
+		{
+				int answer = JOptionPane.showConfirmDialog(null, letter+" Won! Would you like to play again?", "Confirm", JOptionPane.YES_NO_OPTION);
+
+				if(answer == JOptionPane.NO_OPTION)
+				{
+					System.exit(0);
+				}
+				else
+				{
+					new TicTacToeGUI();
+				
+
+				}
+
+			}
+
+	
+		playagain.addActionListener(new ActionListener()
+		{
+			boolean restart = true;
+			@Override
+			//Default procedure used when the button is pressed
+			public void actionPerformed(ActionEvent e)
+			{
+
+				//Logic to change the image of the label
+				if(restart)
+				{
+					new TicTacToeGUI();
+					restart = false;
+				}
+				else
+				{
+					restart = true;
+				}
+			}
+
+		});
+		
+		scare.addActionListener(new ActionListener()
+		{
+			boolean boo = true;
+			@Override
+			//Default procedure used when the button is pressed
+			public void actionPerformed(ActionEvent e)
+			{
+
+				//Logic to change the image of the label
+				if(boo)
+				{
+					scary.setVisible(true);
+					stopSound();
+					playSound2();
+					boo = false;
+				}
+				else
+				{
+					stopSound2();
+					boo = true;
+				}
+			}
+
+		});
+	}
+
+	public static void main(String args[])
+	{
+		 TicTacToeGUI tictactoeGUI = new TicTacToeGUI();
+	}
+}

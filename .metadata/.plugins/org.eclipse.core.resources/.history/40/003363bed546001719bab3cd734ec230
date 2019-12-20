@@ -1,0 +1,55 @@
+
+import java.*;
+import javax.swing.*;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.awt.event.ActionEvent;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+
+public class TicTacToe
+{
+    public static void main(String[]args)
+    {
+        boolean done = false;
+        while (!done)
+        {
+            JFrame frame = new JFrame();
+
+            JButton button= new JButton("Add Interest");
+            frame.add(button);
+            JButton button1 = new JButton("Other Button");
+            frame.add(button1);
+
+            class AddInterestListener implements ActionListener
+            {
+                public void actionPerformed(ActionEvent event)
+                {
+                    System.out.println("hello, I was pressed");
+                }
+            }
+            class OtherButtonListener implements ActionListener
+            {
+                public void actionPerformed(ActionEvent event)
+                {
+                    System.out.println("The Other button was pressed");
+                }
+            }
+
+            ActionListener listener = new AddInterestListener();
+            button.addActionListener(listener);
+            ActionListener listener1 = new OtherButtonListener();
+            button1.addActionListener(listener1);
+
+            frame.setSize(100, 100);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        }
+    }
+}

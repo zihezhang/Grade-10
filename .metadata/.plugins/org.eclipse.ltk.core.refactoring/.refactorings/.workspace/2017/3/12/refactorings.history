@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Memory and Input Assignment&apos;" deleteContents="false" description="Delete resource &apos;Memory and Input Assignment&apos;" element1="/Memory and Input Assignment" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1490191450357"/>
+</session>

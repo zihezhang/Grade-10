@@ -1,0 +1,22 @@
+import java.awt.*;
+import javax.swing.*;
+public class Myown{  
+	public static void main(String[] args) {
+		        JFrame frame=new JFrame("This is JFrame");
+		        JPanel panel=new JPanel();
+		        panel.setSize(400,500);
+
+		        panel.add(new JButton("Button"));
+		        panel.add(new JLabel("this is JLabel"));
+		        panel.setBackground(Color.RED);
+
+		        frame.add(panel);
+		        frame.getContentPane().setBackground(Color.BLACK);
+		        frame.setLayout(new FlowLayout());
+
+
+		        frame.setVisible(true);
+		        frame.setSize(600,800);
+		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    }  
+		}

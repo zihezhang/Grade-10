@@ -1,0 +1,25 @@
+import java.awt.*;
+import javax.swing.*;
+public class Myown extends JFrame
+{
+	private ImageIcon image;
+	private JLabel label;
+
+	Myown() {
+		setLayout(new FlowLayout());
+		// TODO Auto-generated method stub
+		image = new ImageIcon(getClass().getResource("TICTACTOEEEE.jpg"));
+		label = new JLabel (image);
+		add(label);
+	}
+	
+	
+	public static void main (String args[])
+	{
+		Myown gui = new Myown();
+		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gui.setVisible(true);
+		gui.pack();
+		gui.setTitle("image");
+	}
+}
